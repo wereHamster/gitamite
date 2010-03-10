@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+current_dir = File.expand_path(File.dirname(File.readlink(__FILE__)))
+app_root = File.join(current_dir, "../../")
+
+ENV["RAILS_ENV"] ||= "production"
+require File.join(app_root, "/config/boot")
+
+user = ENV['USER']
+full_path = Dir.getwd
+owner, name = full_path.gsub(/.git$/, "").split('/')[-2,2]
+
+repo = Repository.find(:first, :conditions => { :owner => owner, :name => name })
+perms = Permission.find(:all, :conditions => { :repository_id => repo, :uid => user })
+
+ref, oldrev, newrev = ARGV[0], ARGV[1], ARGV[2]
+
+# repo owner can do anything
+exit(0) if user == owner
+
+for perm in perms do
+	refex = perm.refex.gsub('*', '.*')
+	exit(0) if ref.match("^#{refex}$")
+end
+
+exit(1)

@@ -1,0 +1,13 @@
+<%- if logged_in? -%>
+  <li><%= link_to('profile', repositories_path(:uid => current_user_name)) -%></li>
+  <li><%= link_to('logout', logout_path) -%></li>
+<%- else -%>
+  <li>
+  	<% form_for :login, :url => login_path,
+	    :html => { :method => "post" } do |f| -%>
+	  <%= text_field_tag :uid -%>
+	  <%= password_field_tag :password -%> 
+	  <input type="submit" value="login" class="classy"/>
+	<% end -%>
+  </li>
+<%- end -%>

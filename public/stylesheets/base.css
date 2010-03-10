@@ -1,0 +1,201 @@
+
+
+.primary-1 { background-color: #A2B7DA }
+.primary-2 { background-color: #9CAECE }
+.primary-3 { background-color: #849DC9 }
+.primary-4 { background-color: #C7D7F2 }
+.primary-5 { background-color: #D7E1F2 }
+
+.complement-1 { background-color: #FFE5B6 }
+.complement-2 { background-color: #F0D9B0 }
+.complement-3 { background-color: #EBCC94 }
+.complement-4 { background-color: #FFEDCD }
+.complement-5 { background-color: #FFF4E0 }
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: sans-serif;
+	background-color: #eee;
+	color: #333;
+}
+
+.site {
+	width: 800px;
+	margin:0 auto;
+	padding:0 3em;
+	text-align: left;
+}
+
+#error {
+	padding: 60px 0;
+	font-size: 28px;
+	text-align: center;
+}
+
+h1 {
+	margin: 0;
+	padding: 20px 0 0;
+	margin-bottom: 10px;
+	font-size: 22px;
+	font-weight: normal;
+	border-bottom: 1px dotted gray;
+}
+
+h2 {
+	margin: 0;
+	padding: 20px 0 0;
+	margin-bottom: 10px;
+	font-size: 18px;
+	font-weight: normal;
+	border-bottom: 1px dotted gray;
+}
+
+ul {
+	margin: 0;
+}
+
+a.blocklink, .block {
+	display: block;
+	padding: 4px 0 4px 10px;
+	margin-top: 6px;
+	border: 1px solid #bbb;
+	background-color: #ccc;
+}
+
+a.blocklink:hover {
+	background-color: #ddd;
+	text-decoration: none;
+}
+
+a.delete {
+	float:right;
+	font-size: 16px;
+}
+
+#header {
+	padding: 10px;
+	
+	background-color: #ccc;
+	border-bottom: 2px solid #aaa;
+}
+
+a#logo, a:hover#logo {
+	font-size: 24px;
+	text-decoration: none;
+	color: #333;
+}
+
+#menu {
+	float: right;
+	display:inline;margin:0;
+}
+
+#menu li {
+	list-style-type:none;
+	display:inline;
+	margin:0;
+	padding:0 0 0 15px;
+}
+
+#menu form {
+	display: inline;
+}
+
+#flash {
+	background-color: #EBCC94;
+	text-align: center;
+	padding: 4px;
+}
+
+#content {
+}
+
+#main {
+	width: 450px;
+}
+
+#sidebar {
+	float:right;
+	width: 300px;
+	border-left: 1px solid gray;
+	padding: 0 0 0 20px;
+}
+
+img{border:0;}
+a{color:#633;text-decoration:none;outline:none;}
+a:hover{text-decoration:underline;}
+.clear{clear:both;}
+.sparkline{display:none;}
+.right{float:right;}
+.left{float:left;}
+.hidden{display:none;}
+
+.form {margin:15px 0;}
+.form label {margin:0 0 4px 0;font-size:14px;font-weight:bold;color:#333;}
+.form input, .create input, input[type="text"], input[type="password"] {font-size:12px;width:120px;padding:3px;color:#666;}
+.create input {width:220px}
+input[type="submit"] {background-color: #bbb;}
+input[type="submit"].classy{width:60px;height:25px;padding:3px;font-weight:bold;font-size:12px;color:#333;;white-space:nowrap;border:none;overflow:visible;cursor:pointer;}
+input[type="submit"].plus{width:35px;height:25px;padding:3px;font-weight:bold;font-size:12px;color:#333;;white-space:nowrap;border:none;overflow:visible;cursor:pointer;}
+
+
+p.checkbox{margin:15px 0;font-size:14px;font-weight:bold;color:#333;}
+p.checkbox label{margin-left:5px;}
+
+html, body, #container { height: 100%; }
+body > #container { height: auto; min-height: 100%; }
+#content { padding-bottom: 4em; }
+#footer {
+	background-color: #ccc;
+	
+	position: relative;
+	margin-top: -4em;
+	height: 4em;
+	clear:both;
+} 
+
+#perms {
+	margin-top: 10px;
+	font-size: 15px;
+}
+
+div.perm {
+	border: 1px solid #bbb;
+	background-color: #ccc;
+	padding: 2px 6px;
+	margin-top: 4px;
+}
+
+div.perm span.refex {
+	float:right;
+	width: 170px;
+}
+
+#history {
+	margin-top: 20px;
+	font-size: 14px;
+}
+
+li.commit {
+	display: block;
+	
+	border-bottom: 1px dotted #bbb;
+	padding: 2px 6px 2px 24px;
+	background: url(/images/more-link.png) no-repeat left center;
+}
+
+.help {
+	font-size: 12px;
+	font-weight: normal;
+}
+
+a.pdelete {
+	display:block;
+	float:right;
+	background: url(/images/x.gif) no-repeat right center;
+	width: 17px;
+}

@@ -1,0 +1,12 @@
+
+development:
+    ldap_host: localhost
+    ldap_base: ou=people,dc=example,dc=com
+
+production:
+    ldap_host: localhost
+    ldap_base: ou=people,dc=example,dc=com
+
+test:
+    ldap_host: localhost
+    ldap_base: ou=people,dc=example,dc=com

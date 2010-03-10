@@ -1,0 +1,9 @@
+
+<h1>recent activity</h1>
+<ul>
+<% for repo in @repos %>
+<div class="block">
+<%= link_to repo.owner, repositories_path(:uid => repo.owner) %> / <%= link_to repo.name, repository_path(:uid => repo.owner, :id => repo.name) %>
+</div>
+<% end %>
+</ul>

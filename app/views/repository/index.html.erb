@@ -1,0 +1,20 @@
+
+<h1><%= params[:uid] -%>'s repositories</h1>
+<ul>
+<% for repo in @repos %>
+<%= link_to repo.name, repository_path(:uid => params[:uid], :id => repo.name), :class => "blocklink" %>
+<% end %>
+</ul>
+
+<% content_for :sidebar do %>
+<%- if logged_in? and params[:uid] == current_user_name -%>
+<div id="create" class="create">
+<h1>create repository</h1>
+
+<% form_for :repo, Repository.new, new_repository_path(:uid => params[:uid]) do |f| %>
+	<%= f.text_field :name %>
+  <%= submit_tag 'create', :class => "classy" %>
+<% end %>
+</div>
+<% end %>
+<% end %>

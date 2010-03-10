@@ -1,0 +1,63 @@
+
+<h1><%= link_to @repo.owner, repositories_path(:uid => @repo.owner) -%> / <%= @repo.name %>
+<%- if logged_in? and params[:uid] == current_user_name -%>
+<%= link_to("delete", { :action => :destroy }, :method => :delete, :class => "delete") %>
+<% end %>
+</h1>
+<div id="url"><span>URL:</span> <a href="#"><%= "#{session[:uid]}@" if session[:uid] -%>git.enterpriselab.ch:<%= @repo.owner -%>/<%= @repo.name -%>.git</a></div>
+<ul id="history">
+<% if @repo.history and @repo.history.length > 0 %>
+<% for commit in @repo.history %>	
+	<li class="commit">
+		<%= commit.message.split("\n")[0] %>
+	</li>
+<% end %>
+<% else %>
+<div style="text-align: center; font-size: 18px">no commits yet</div>
+<% end %>
+</ul>
+
+<% content_for :sidebar do %>
+<% if logged_in? and params[:uid] == current_user_name %>
+<h1>permissions</h1>
+
+<p class="help">The repository is world-readable unless you set the checkbox below. Once you hide the repository from the public, you can grant permissions to individual users.</p>
+
+<p class="checkbox">
+<%= check_box_tag "hidden", "1", @repo.hidden -%>
+<label for="hidden">private repository</label>
+<img src="/images/busy.gif" style="display:none;float:right" id="spinner" />
+</p>
+
+
+
+<%= observe_field 'hidden',
+:url => { :controller => 'repository', :action => 'update' },
+:on => 'click', :with => 'option', :method => :put,
+:before => "Element.show('spinner')",
+:success => "Element.hide('spinner');" -%>
+
+<% form_for :perm, Permission.new, :url => repository_perms_path(:uid => session[:uid], :repository_id => @repo.name) do |f| %>
+
+<table class="form">
+	<tr><td>user</td><td>refex</td><td>&nbsp;</tr>
+	<tr><td><%= text_field_with_auto_complete :perm, :uid, {}, {
+		:url => repository_perms_path(:uid => @repo.owner, :repository_id => @repo.name, :format => :js), :method => :get,\
+		:with => "'search=' + element.value" } %></td><td><%= f.text_field :refex, :value => "refs/heads/*" %></td><td><%= submit_tag "add", :class => "plus" %></td></tr>
+</table>
+	
+	    
+<% end %>
+	
+<div id="perms">
+<% for perm in @perms %>
+<div class="perm">
+	<%= link_to "&nbsp;", repository_perm_path(:uid => @repo.owner, :repository_id => @repo.name, :id => perm), :method => :delete, :class => "pdelete" %>
+ <%= link_to perm.uid, repositories_path(:uid => perm.uid) -%><span class="refex"><%= perm.refex -%></span>
+  </div>
+<% end %>
+</div>
+
+<% end %>
+<% end %>
+
